@@ -46,7 +46,7 @@ def mainFunc(sourceLoc, destLoc):
         if(currentFrame % nThreads == 0 and currentFrame != 0):
             print('Starting Canny Edge Detection on ' + str(currentFrame - nThreads + 1) + ' - ' + str(currentFrame))
             for i in range(1, nThreads + 1):
-                threadList.append(threading.Thread(target=cannyDetect, args=(imgs[i-1], currentFrame - (60 - i))))
+                threadList.append(threading.Thread(target=cannyDetect, args=(imgs[i-1], currentFrame - (nThreads - i))))
 
             for i in range(nThreads):
                 threadList[i].start()
